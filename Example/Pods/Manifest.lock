@@ -1,0 +1,28 @@
+PODS:
+  - LCAlertController (0.1.1):
+    - Masonry
+  - Masonry (1.1.0)
+  - MJAlertController (0.1.0):
+    - LCAlertController
+    - Masonry
+
+DEPENDENCIES:
+  - MJAlertController (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - LCAlertController
+    - Masonry
+
+EXTERNAL SOURCES:
+  MJAlertController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LCAlertController: 89d3dcfdc4c27a1386958701e91b762044734fdd
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJAlertController: 3658ed81183643e3b76e3ceade1cfb022721e04d
+
+PODFILE CHECKSUM: a318fa685089bb5eb92dc14f774721f16852fda3
+
+COCOAPODS: 1.6.0

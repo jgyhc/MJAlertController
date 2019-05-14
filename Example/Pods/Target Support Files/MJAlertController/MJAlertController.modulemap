@@ -1,0 +1,6 @@
+framework module MJAlertController {
+  umbrella header "MJAlertController-umbrella.h"
+
+  export *
+  module * { export * }
+}
