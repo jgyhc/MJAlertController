@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'MJAlertController'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of MJAlertController.'
+  s.summary          = '继承与LCAlertController写的一个弹窗 MJAlertController.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
