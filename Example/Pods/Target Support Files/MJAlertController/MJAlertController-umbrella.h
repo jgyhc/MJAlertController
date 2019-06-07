@@ -12,6 +12,7 @@
 
 #import "MJAlertController.h"
 #import "MJTextAlertController.h"
+#import "MJTextFieldViewController.h"
 
 FOUNDATION_EXPORT double MJAlertControllerVersionNumber;
 FOUNDATION_EXPORT const unsigned char MJAlertControllerVersionString[];

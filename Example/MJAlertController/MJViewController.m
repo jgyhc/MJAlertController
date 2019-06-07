@@ -8,6 +8,7 @@
 
 #import "MJViewController.h"
 #import "MJTextAlertController.h"
+#import "MJTextFieldViewController.h"
 
 @interface MJViewController ()<UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -19,7 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _datas = @[@"带标题带两个按钮", @"不带标题带两个按钮", @"带标题带一个按钮", @"带标题带多个按钮", @"不带标题带多个按钮", @"定义了按钮的样式"];
+    _datas = @[@"带标题带两个按钮", @"不带标题带两个按钮", @"带标题带一个按钮", @"带标题带多个按钮", @"不带标题带多个按钮", @"定义了按钮的样式", @"textfield"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -72,6 +73,12 @@
             NSLog(@"点击了%@", title);
         }];
         [self presentViewController:alertContrller animated:YES completion:nil] ;
+    }
+    if (indexPath.row == 6) {
+        MJTextFieldViewController *viewController = [[MJTextFieldViewController alloc] initWithTitle:@"大声道" placeholder:@"a阿达" buttons:@[@"确定"] tapBlock:^(MJAlertController * _Nonnull controller, NSString * _Nonnull title, NSInteger buttonIndex) {
+            NSLog(@"点击了%@", title);
+        }];
+        [self presentViewController:viewController animated:YES completion:nil] ;
     }
     
     

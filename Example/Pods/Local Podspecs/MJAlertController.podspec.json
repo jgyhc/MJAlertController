@@ -1,7 +1,7 @@
 {
   "name": "MJAlertController",
-  "version": "0.1.0",
-  "summary": "A short description of MJAlertController.",
+  "version": "0.1.2",
+  "summary": "继承与LCAlertController写的一个弹窗 MJAlertController.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/jgyhc/MJAlertController",
   "license": {
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/jgyhc/MJAlertController.git",
-    "tag": "0.1.0"
+    "tag": "0.1.2"
   },
   "platforms": {
     "ios": "8.0"
