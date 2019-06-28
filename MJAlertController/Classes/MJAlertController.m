@@ -15,7 +15,6 @@ NSString * const MJAlertControllerButtonFontKey = @"font";
 NSString * const MJAlertControllerButtonNormalBackgroundColorKey = @"normalBackgroundColor";
 NSString * const MJAlertControllerButtonHighlightedBackgroundColorKey = @"highlightedBackgroundColor";
 @interface MJAlertController ()
-@property (nonatomic, assign) CGFloat titleHeight;//标题高度
 
 @property (nonatomic, assign) CGFloat buttonsHeight;//按钮高度
 
@@ -49,7 +48,6 @@ NSString * const MJAlertControllerButtonHighlightedBackgroundColorKey = @"highli
     [self addTitleView];
     [self updateButtons];
     [self initContentView];
-    
     self.containerView.alpha = 0;
     self.containerView.transform = CGAffineTransformScale(self.containerView.transform, 0.5, 0.5);
     [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:1 options:UIViewAnimationOptionTransitionNone animations:^{
@@ -61,12 +59,23 @@ NSString * const MJAlertControllerButtonHighlightedBackgroundColorKey = @"highli
 
 - (void)initContentView {
     [self.containerView addSubview:self.contentView];
-    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.containerView.mas_top).mas_offset(self.titleHeight + self.contentEdgeInsets.top);
-        make.left.mas_equalTo(self.containerView.mas_left).mas_offset(self.contentEdgeInsets.left);
-        make.right.mas_equalTo(self.containerView.mas_right).mas_offset(-self.contentEdgeInsets.right);
-        make.bottom.mas_equalTo(self.containerView.mas_bottom).mas_offset(-self.buttonsHeight - self.contentEdgeInsets.bottom);
-    }];
+    if ([self.title isKindOfClass:[NSString class]] && self.title.length > 0) {
+        [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.titleLabel.mas_bottom).mas_offset(self.contentEdgeInsets.top);
+            make.left.mas_equalTo(self.containerView.mas_left).mas_offset(self.contentEdgeInsets.left);
+            make.right.mas_equalTo(self.containerView.mas_right).mas_offset(-self.contentEdgeInsets.right);
+            make.bottom.mas_equalTo(self.containerView.mas_bottom).mas_offset(-self.buttonsHeight - self.contentEdgeInsets.bottom);
+            make.height.mas_greaterThanOrEqualTo(60);
+        }];
+    }else {
+        [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.containerView.mas_top).mas_offset(self.contentEdgeInsets.top);
+            make.left.mas_equalTo(self.containerView.mas_left).mas_offset(self.contentEdgeInsets.left);
+            make.right.mas_equalTo(self.containerView.mas_right).mas_offset(-self.contentEdgeInsets.right);
+            make.bottom.mas_equalTo(self.containerView.mas_bottom).mas_offset(-self.buttonsHeight - self.contentEdgeInsets.bottom);
+            make.height.mas_greaterThanOrEqualTo(60);
+        }];
+    }
 }
 
 - (void)updateButtons {
@@ -83,7 +92,7 @@ NSString * const MJAlertControllerButtonHighlightedBackgroundColorKey = @"highli
             make.left.mas_equalTo(self.containerView.mas_left);
             make.right.mas_equalTo(self.containerView.mas_right);
             make.height.mas_equalTo(buttonHeight);
-            make.top.mas_greaterThanOrEqualTo(self.containerView.mas_top).mas_offset(self.titleHeight);
+//            make.top.mas_greaterThanOrEqualTo(self.containerView.mas_top).mas_offset(self.titleHeight);
         }];
         _buttonsHeight = buttonHeight;
         _buttonViews = @[button];
@@ -100,7 +109,7 @@ NSString * const MJAlertControllerButtonHighlightedBackgroundColorKey = @"highli
             make.bottom.mas_equalTo(self.containerView.mas_bottom);
             make.height.mas_equalTo(buttonHeight);
             make.width.mas_equalTo(self.containerView.mas_width).multipliedBy(0.5);
-            make.top.mas_greaterThanOrEqualTo(self.containerView.mas_top).mas_offset(self.titleHeight);
+//            make.top.mas_greaterThanOrEqualTo(self.containerView.mas_top).mas_offset(self.titleHeight);
         }];
         
         [self.containerView addSubview:button1];
@@ -109,7 +118,7 @@ NSString * const MJAlertControllerButtonHighlightedBackgroundColorKey = @"highli
             make.right.mas_equalTo(self.containerView.mas_right).mas_offset(-0.5);
             make.height.mas_equalTo(buttonHeight);
             make.width.mas_equalTo(self.containerView.mas_width).multipliedBy(0.5).mas_offset(1);
-            make.top.mas_greaterThanOrEqualTo(self.containerView.mas_top).mas_offset(self.titleHeight);
+//            make.top.mas_greaterThanOrEqualTo(self.containerView.mas_top).mas_offset(self.titleHeight);
         }];
         _buttonsHeight = buttonHeight;
         _buttonViews = @[button, button1];
@@ -120,22 +129,22 @@ NSString * const MJAlertControllerButtonHighlightedBackgroundColorKey = @"highli
 
 - (void)addTitleView {
     if ([self.title isKindOfClass:[NSString class]] && self.title.length > 0) {
-        _titleHeight = 40;
         self.titleLabel.text = self.title;
         [self.containerView addSubview:self.titleLabel];
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.containerView.mas_left);
             make.right.mas_equalTo(self.containerView.mas_right);
-            make.top.mas_equalTo(self.containerView.mas_top);
-            make.height.mas_equalTo(40);
+            make.top.mas_equalTo(self.containerView.mas_top).mas_offset(20);
         }];
-    }else {
-        _titleHeight = 0;
     }
 }
 
 - (CGFloat)buttonHeight {
     return 44.0;
+}
+
+- (UIEdgeInsets)contentEdgeInsets {
+    return UIEdgeInsetsMake(20, 15, 15, 15);
 }
 
 
@@ -151,7 +160,7 @@ NSString * const MJAlertControllerButtonHighlightedBackgroundColorKey = @"highli
             make.right.mas_equalTo(self.containerView.mas_right);
             make.height.mas_equalTo(buttonHeight);
             make.bottom.mas_equalTo(self.containerView.mas_bottom).mas_offset(-1 * bottomSpace);
-            make.top.mas_greaterThanOrEqualTo(self.containerView.mas_top).mas_offset(self.titleHeight);
+//            make.top.mas_greaterThanOrEqualTo(self.containerView.mas_top).mas_offset(self.titleHeight);
         }];
         bottomSpace = bottomSpace + buttonHeight - 0.5;
     }
@@ -236,7 +245,6 @@ NSString * const MJAlertControllerButtonHighlightedBackgroundColorKey = @"highli
         _titleLabel.font = [UIFont systemFontOfSize:15];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.textColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1.0];
-        _titleLabel.backgroundColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0];
     }
     return _titleLabel;
 }

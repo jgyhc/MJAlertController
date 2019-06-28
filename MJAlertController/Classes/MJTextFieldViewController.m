@@ -44,14 +44,13 @@
         self.textField.placeholder = _placeholder;
     }
     [self.contentView addSubview:self.textField];
-    CGFloat topSpace = self.titleHeight > 0 ? 15 : 44;
-    CGFloat bottomSpace = self.titleHeight > 0 ? 15 : 33;
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.contentView.mas_left).mas_offset(25);
-        make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-25);
+        make.left.mas_equalTo(self.contentView.mas_left).mas_offset(0);
+        make.right.mas_equalTo(self.contentView.mas_right).mas_offset(0);
         make.height.mas_equalTo(30);
-        make.top.mas_equalTo(self.contentView.mas_top).mas_offset(15 + topSpace);
-        make.bottom.mas_equalTo(self.contentView.mas_bottom).mas_offset(- 15 -bottomSpace);
+        make.centerY.mas_equalTo(self.contentView.mas_centerY);
+//        make.top.mas_equalTo(self.contentView.mas_top).mas_offset(0);
+//        make.bottom.mas_equalTo(self.contentView.mas_bottom).mas_offset(0);
     }];
 }
 

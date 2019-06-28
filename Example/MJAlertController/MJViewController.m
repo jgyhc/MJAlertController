@@ -42,7 +42,7 @@
         [self presentViewController:alertContrller animated:YES completion:nil] ;
     }
     if (indexPath.row == 1) {
-        MJTextAlertController *alertContrller = [[MJTextAlertController alloc] initWithTitle:nil content:@"阿斯达阿斯达多阿达啊啊大叔阿斯达阿斯达多阿达啊啊大叔阿斯达阿斯达多阿达啊啊大叔阿斯达阿斯达多阿达啊啊大叔阿斯达阿斯达多阿达啊啊大叔阿斯达阿斯达多阿达啊啊大叔阿斯达阿斯达多阿达啊啊大叔" buttons:@[@"取消", @"确定"] tapBlock:^(MJAlertController * _Nonnull controller, NSString * _Nonnull title, NSInteger buttonIndex) {
+        MJTextAlertController *alertContrller = [[MJTextAlertController alloc] initWithTitle:nil content:@"阿斯达阿斯达多叔" buttons:@[@"取消", @"确定"] tapBlock:^(MJAlertController * _Nonnull controller, NSString * _Nonnull title, NSInteger buttonIndex) {
             NSLog(@"点击了%@", title);
         }];
         [self presentViewController:alertContrller animated:YES completion:nil] ;

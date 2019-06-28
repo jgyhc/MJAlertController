@@ -19,8 +19,6 @@ typedef void (^MJAlertControllerCompletionBlock) (MJAlertController * __nonnull 
 
 @interface MJAlertController : LCAlertController
 
-@property (nonatomic, assign, readonly) CGFloat titleHeight;//标题高度
-
 @property (nonatomic, assign, readonly) CGFloat buttonsHeight;//按钮高度
 
 @property (nonatomic, assign) UIEdgeInsets contentEdgeInsets;

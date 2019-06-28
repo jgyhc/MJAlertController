@@ -45,10 +45,8 @@
 
 - (void)addContentLabel {
     [self.contentView addSubview:self.contentLabel];
-    CGFloat topSpace = self.titleHeight > 0 ? 15 : 44;
-    CGFloat bottomSpace = self.titleHeight > 0 ? 15 : 33;
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(UIEdgeInsetsMake(topSpace, 25, bottomSpace, 25));
+        make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
 }
 
