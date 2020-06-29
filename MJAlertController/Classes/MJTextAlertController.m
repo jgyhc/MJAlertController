@@ -50,6 +50,11 @@
     }];
 }
 
+- (void)setContentTextAlignment:(NSTextAlignment)contentTextAlignment {
+    _contentTextAlignment = contentTextAlignment;
+    self.contentLabel.textAlignment = contentTextAlignment;
+}
+
 - (UILabel *)contentLabel {
     if (!_contentLabel) {
         _contentLabel = [[UILabel alloc] init];

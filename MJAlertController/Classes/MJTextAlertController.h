@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithTitle:(nullable NSString *)title content:(nullable NSString *)content buttons:(nullable NSArray *)buttons tapBlock:(nullable MJAlertControllerCompletionBlock)tapBlock;
 
+@property (nonatomic, assign) NSTextAlignment contentTextAlignment;
+
 @end
 
 NS_ASSUME_NONNULL_END
